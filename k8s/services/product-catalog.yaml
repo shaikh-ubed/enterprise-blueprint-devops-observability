@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: product-catalog
-        image: us-central1-docker.pkg.dev/deployandobserve/otel-demo/product-catalog:v1
+        image: YOUR_REGISTRY/product-catalog:v1
         ports:
         - containerPort: 3550
         env:
