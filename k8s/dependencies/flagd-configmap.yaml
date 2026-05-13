@@ -1,0 +1,41 @@
+# flagd ConfigMap
+# Must be created BEFORE flagd deployment!
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: flagd-config
+  namespace: otel-demo
+  labels:
+    app: flagd
+    environment: production
+    team: platform
+data:
+  demo.flagd.json: |
+    {
+      "flags": {
+        "productCatalogFailure": {
+          "state": "ENABLED",
+          "variants": {
+            "on": true,
+            "off": false
+          },
+          "defaultVariant": "off"
+        },
+        "adServiceFailure": {
+          "state": "ENABLED",
+          "variants": {
+            "on": true,
+            "off": false
+          },
+          "defaultVariant": "off"
+        },
+        "recommendationServiceCacheFailure": {
+          "state": "ENABLED",
+          "variants": {
+            "on": true,
+            "off": false
+          },
+          "defaultVariant": "off"
+        }
+      }
+    }
