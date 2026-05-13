@@ -7,9 +7,9 @@
 
 echo "Setting up Disaster Recovery..."
 
-PROJECT_ID="deployandobserve"
+PROJECT_ID="YOUR_PROJECT_ID"
 BUCKET_NAME="otel-demo-velero-backups"
-SERVICE_ACCOUNT="918055665788-compute@developer.gserviceaccount.com"
+SERVICE_ACCOUNT="YOUR_SERVICE_ACCOUNT"
 
 # ─────────────────────────────────
 # STEP 1: Create GCS Bucket
