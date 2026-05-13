@@ -1,0 +1,74 @@
+# Recommendation Service
+# Custom Python microservice
+# OTel auto-instrumented
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendation
+  namespace: otel-demo
+  labels:
+    app: recommendation
+    version: v1
+    language: python
+    environment: production
+    team: platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recommendation
+  template:
+    metadata:
+      labels:
+        app: recommendation
+        version: v1
+    spec:
+      containers:
+      - name: recommendation
+        image: us-central1-docker.pkg.dev/deployandobserve/otel-demo/recommendation:v1
+        ports:
+        - containerPort: 9001
+        env:
+        - name: RECOMMENDATION_PORT
+          value: "9001"
+        - name: PRODUCT_CATALOG_ADDR
+          value: "product-catalog:3550"
+        - name: FLAGD_HOST
+          value: "flagd"
+        - name: FLAGD_PORT
+          value: "8013"
+        - name: OTEL_SERVICE_NAME
+          value: "recommendation"
+        - name: OTEL_EXPORTER_OTLP_ENDPOINT
+          value: "http://otel-collector:4317"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
+        livenessProbe:
+          grpc:
+            port: 9001
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          grpc:
+            port: 9001
+          initialDelaySeconds: 10
+          periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: recommendation
+  namespace: otel-demo
+  labels:
+    app: recommendation
+spec:
+  selector:
+    app: recommendation
+  ports:
+  - port: 9001
+    targetPort: 9001
