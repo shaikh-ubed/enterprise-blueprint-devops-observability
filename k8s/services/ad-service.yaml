@@ -1,0 +1,72 @@
+# Ad Service
+# Custom Java microservice
+# OTel Java agent auto-instrumented
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ad-service
+  namespace: otel-demo
+  labels:
+    app: ad-service
+    version: v1
+    language: java
+    environment: production
+    team: platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ad-service
+  template:
+    metadata:
+      labels:
+        app: ad-service
+        version: v1
+    spec:
+      containers:
+      - name: ad-service
+        image: us-central1-docker.pkg.dev/deployandobserve/otel-demo/ad-service:v1
+        ports:
+        - containerPort: 9555
+        env:
+        - name: AD_PORT
+          value: "9555"
+        - name: FLAGD_HOST
+          value: "flagd"
+        - name: FLAGD_PORT
+          value: "8013"
+        - name: OTEL_SERVICE_NAME
+          value: "ad"
+        - name: OTEL_EXPORTER_OTLP_ENDPOINT
+          value: "http://otel-collector:4317"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          grpc:
+            port: 9555
+          initialDelaySeconds: 20
+          periodSeconds: 10
+        readinessProbe:
+          grpc:
+            port: 9555
+          initialDelaySeconds: 20
+          periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ad-service
+  namespace: otel-demo
+  labels:
+    app: ad-service
+spec:
+  selector:
+    app: ad-service
+  ports:
+  - port: 9555
+    targetPort: 9555
