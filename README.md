@@ -318,6 +318,43 @@ enterprise-blueprint-devops-observability/
     ├── 04-deploy-services.sh
     └── 05-setup-velero.sh
 ```
+## 📸 Project Screenshots
+
+### 🛒 Webstore — Running on GKE
+![Webstore](screenshots/01-webstore.png)
+
+### 🏗️ Architecture Diagram
+![Architecture](screenshots/02-architecture-light.png)
+
+### 🏗️ Architecture — Eraser.io Dark Theme
+![Architecture Dark](screenshots/03-architecture-dark.png)
+
+### 📊 Grafana — All Dashboards
+![Grafana Dashboards](screenshots/12-grafana-dashboards.png)
+
+### 📊 Grafana — Demo Dashboard
+![Grafana Demo](screenshots/10-grafana-demo.png)
+
+### 📊 Grafana — PostgreSQL Dashboard
+![Grafana PostgreSQL](screenshots/11-grafana-postgresql.png)
+
+### 📊 Grafana — Linux Dashboard
+![Grafana Linux](screenshots/09-grafana-linux.png)
+
+### 🔍 Jaeger — Distributed Traces
+![Jaeger Traces](screenshots/08-jaeger-traces.png)
+
+### 🔍 Jaeger — Payment Monitor
+![Jaeger Monitor](screenshots/07-jaeger-payment-monitor.png)
+
+### 📈 Prometheus — CPU Metrics
+![Prometheus](screenshots/04-prometheus-metrics.png)
+
+### 🚩 Feature Flags — Flagd
+![Flagd](screenshots/05-flagd-feature-flags.png)
+
+### ⚡ Load Generator — Locust
+![Locust](screenshots/06-locust-load-generator.png)
 
 ## 👤 Author
 
