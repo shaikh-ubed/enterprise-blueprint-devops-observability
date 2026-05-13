@@ -6,9 +6,9 @@
 
 echo "Creating GKE cluster..."
 
-PROJECT_ID="deployandobserve"
+PROJECT_ID="YOUR_PROJECT_ID"
 CLUSTER_NAME="otel-demo-cluster"
-ZONE="us-central1-a"
+ZONE="YOUR_ZONE"
 
 # Create GKE cluster
 # pd-standard = no SSD quota issue!
@@ -39,7 +39,7 @@ kubectl get nodes
 # Bind Workload Identity for Velero
 gcloud iam service-accounts \
   add-iam-policy-binding \
-  918055665788-compute@developer.gserviceaccount.com \
+  YOUR_SERVICE_ACCOUNT \
   --role roles/iam.workloadIdentityUser \
   --member "serviceAccount:$PROJECT_ID.svc.id.goog[velero/velero-server]"
 
