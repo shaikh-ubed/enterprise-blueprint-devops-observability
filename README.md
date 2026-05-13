@@ -23,7 +23,7 @@ SLO-based reliability and automated DR
 
 ## 🏗️ Architecture
 
-![Architecture](diagrams/architecture.png)
+ ![Architecture](diagrams/02-architecture-light.png.png)
 
 ## 🎯 9 Engineering Roles Covered
 
