@@ -7,8 +7,8 @@
 echo "Setting up GCP permissions..."
 
 PROJECT_ID="deployandobserve"
-SERVICE_ACCOUNT="918055665788-compute@developer.gserviceaccount.com"
-GKE_NODE_SA="service-918055665788@gcp-sa-gkenode.iam.gserviceaccount.com"
+SERVICE_ACCOUNT="YOUR_SERVICE_ACCOUNT"
+GKE_NODE_SA="YOUR_GKE_NODE_SERVICE_ACCOUNT"
 
 # Editor role
 gcloud projects add-iam-policy-binding $PROJECT_ID \
