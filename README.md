@@ -196,9 +196,32 @@ kubectl get svc prometheus -n otel-demo
 | 🚩 Feature Flags | http://EXTERNAL-IP:8080/feature/ | No login |
 | 📈 Prometheus | http://PROMETHEUS-IP:9090 | No login |
 
+
+
+> [!NOTE]      → Blue box ℹ️
+> [!TIP]       → Green box 💡
+> [!IMPORTANT] → Purple box ❗
+> [!WARNING]   → Yellow box ⚠️
+> [!CAUTION]   → Red box 🔴
+
+
 ## 🔒 Security Implementation
 
-```bash
+> [!NOTE]
+> Follows ISO 27001 + NIST Cybersecurity Framework
+
+> [!IMPORTANT]
+> Zero Trust security model applied!
+> Default deny all network traffic!
+
+### Security highlights:
+- ✅ Zero Trust security framework
+- ✅ ISO 27001 + NIST standards
+- ✅ RBAC 3 roles implementation
+- ✅ Network policies (default deny)
+- ✅ Image scanning setup
+- ✅ Secret management best practices
+
 # Create RBAC roles
 kubectl create role developer \
   --verb=get,list,watch,create,update,patch \
