@@ -198,13 +198,6 @@ kubectl get svc prometheus -n otel-demo
 
 
 
-> [!NOTE]      → Blue box ℹ️
-> [!TIP]       → Green box 💡
-> [!IMPORTANT] → Purple box ❗
-> [!WARNING]   → Yellow box ⚠️
-> [!CAUTION]   → Red box 🔴
-
-
 ## 🔒 Security Implementation
 
 > [!NOTE]
