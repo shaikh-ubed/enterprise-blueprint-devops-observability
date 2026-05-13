@@ -85,7 +85,7 @@ Docker v29.4.3
 GKE Auth Plugin v35.0.1
 ```
 
-### Phase 1: Create VM
+### Phase 1: Create Vm
 ```bash
 gcloud compute instances create otel \
   --zone=us-central1-a \
