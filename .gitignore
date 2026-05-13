@@ -1,0 +1,21 @@
+# Credentials
+*.json
+*.key
+*.pem
+*credentials*
+*secret*
+.env
+.env.*
+
+# GCP
+gcp-key.json
+service-account.json
+application_default_credentials.json
+
+# Terraform
+*.tfstate
+*.tfvars
+
+# Misc
+.DS_Store
+*.log
