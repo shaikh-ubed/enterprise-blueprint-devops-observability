@@ -320,41 +320,43 @@ enterprise-blueprint-devops-observability/
 ```
 ## 📸 Project Screenshots
 
+## 📸 Project Screenshots
+
 ### 🛒 Webstore — Running on GKE
-![Webstore](screenshots/01-webstore.png)
+![Webstore](screenshots/01-webstore.png.png)
 
 ### 🏗️ Architecture Diagram
-![Architecture](screenshots/02-architecture-light.png)
+![Architecture](screenshots/02-architecture-light.png.png)
 
 ### 🏗️ Architecture — Eraser.io Dark Theme
-![Architecture Dark](screenshots/03-architecture-dark.png)
+![Architecture Dark](screenshots/03-architecture-dark.png.png)
 
 ### 📊 Grafana — All Dashboards
-![Grafana Dashboards](screenshots/12-grafana-dashboards.png)
+![Grafana Dashboards](screenshots/12-grafana-dashboards.png.png)
 
 ### 📊 Grafana — Demo Dashboard
-![Grafana Demo](screenshots/10-grafana-demo.png)
+![Grafana Demo](screenshots/10-grafana-demo.png.png)
 
 ### 📊 Grafana — PostgreSQL Dashboard
-![Grafana PostgreSQL](screenshots/11-grafana-postgresql.png)
+![Grafana PostgreSQL](screenshots/11-grafana-postgresql.png.png)
 
 ### 📊 Grafana — Linux Dashboard
-![Grafana Linux](screenshots/09-grafana-linux.png)
+![Grafana Linux](screenshots/09-grafana-linux.png.png)
 
 ### 🔍 Jaeger — Distributed Traces
-![Jaeger Traces](screenshots/08-jaeger-traces.png)
+![Jaeger Traces](screenshots/08-jaeger-traces.png.png)
 
 ### 🔍 Jaeger — Payment Monitor
-![Jaeger Monitor](screenshots/07-jaeger-payment-monitor.png)
+![Jaeger Monitor](screenshots/07-jaeger-payment-monitor.png.png)
 
 ### 📈 Prometheus — CPU Metrics
-![Prometheus](screenshots/04-prometheus-metrics.png)
+![Prometheus](screenshots/04-prometheus-metrics.png.png)
 
 ### 🚩 Feature Flags — Flagd
-![Flagd](screenshots/05-flagd-feature-flags.png)
+![Flagd](screenshots/05-flagd-feature-flags.png.png)
 
 ### ⚡ Load Generator — Locust
-![Locust](screenshots/06-locust-load-generator.png)
+![Locust](screenshots/06-locust-load-generator.png.png)
 
 ## 👤 Author
 
