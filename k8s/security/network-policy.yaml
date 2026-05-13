@@ -1,0 +1,101 @@
+# Network Policies — Zero Trust!
+# Default deny all traffic first!
+# Then explicitly allow what is needed!
+
+# Step 1: Default Deny All
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-all
+  namespace: otel-demo
+  labels:
+    environment: production
+    team: security
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+---
+# Step 2: Allow product-catalog
+# to talk to postgres and otel-collector
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-product-catalog
+  namespace: otel-demo
+spec:
+  podSelector:
+    matchLabels:
+      app: product-catalog
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: recommendation
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: postgres
+  - to:
+    - podSelector:
+        matchLabels:
+          app: otel-collector
+  - to:
+    - podSelector:
+        matchLabels:
+          app: flagd
+---
+# Step 3: Allow ad-service
+# to talk to otel-collector and flagd
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ad-service
+  namespace: otel-demo
+spec:
+  podSelector:
+    matchLabels:
+      app: ad-service
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: otel-collector
+  - to:
+    - podSelector:
+        matchLabels:
+          app: flagd
+---
+# Step 4: Allow recommendation
+# to talk to product-catalog and otel-collector
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-recommendation
+  namespace: otel-demo
+spec:
+  podSelector:
+    matchLabels:
+      app: recommendation
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          app: product-catalog
+  - to:
+    - podSelector:
+        matchLabels:
+          app: otel-collector
+  - to:
+    - podSelector:
+        matchLabels:
+          app: flagd
