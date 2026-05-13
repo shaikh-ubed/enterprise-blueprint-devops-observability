@@ -1,0 +1,58 @@
+# flagd Deployment
+# Deploy AFTER flagd-configmap.yaml!
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flagd
+  namespace: otel-demo
+  labels:
+    app: flagd
+    environment: production
+    team: platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flagd
+  template:
+    metadata:
+      labels:
+        app: flagd
+    spec:
+      containers:
+      - name: flagd
+        image: ghcr.io/open-feature/flagd:latest
+        args:
+        - start
+        - --uri
+        - file:/etc/flagd/demo.flagd.json
+        ports:
+        - containerPort: 8013
+        volumeMounts:
+        - name: flagd-config
+          mountPath: /etc/flagd
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "100m"
+          limits:
+            memory: "64Mi"
+            cpu: "200m"
+      volumes:
+      - name: flagd-config
+        configMap:
+          name: flagd-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flagd
+  namespace: otel-demo
+  labels:
+    app: flagd
+spec:
+  selector:
+    app: flagd
+  ports:
+  - port: 8013
+    targetPort: 8013
