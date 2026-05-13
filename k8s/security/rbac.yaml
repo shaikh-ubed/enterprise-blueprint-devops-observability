@@ -1,0 +1,63 @@
+# RBAC Roles — Zero Trust Security
+# 3 roles: developer, viewer, admin
+# Least privilege principle!
+
+# Developer Role
+# Can deploy but cannot delete!
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: developer
+  namespace: otel-demo
+  labels:
+    environment: production
+    team: security
+rules:
+- apiGroups: ["", "apps"]
+  resources: ["pods", "deployments", "services"]
+  verbs: ["get", "list", "watch", "create", "update", "patch"]
+---
+# Viewer Role
+# Read only access!
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: viewer
+  namespace: otel-demo
+  labels:
+    environment: production
+    team: security
+rules:
+- apiGroups: ["", "apps"]
+  resources: ["pods", "services", "deployments"]
+  verbs: ["get", "list", "watch"]
+---
+# Developer RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: developer-binding
+  namespace: otel-demo
+subjects:
+- kind: User
+  name: developer@example.com
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: developer
+  apiGroup: rbac.authorization.k8s.io
+---
+# Viewer RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: viewer-binding
+  namespace: otel-demo
+subjects:
+- kind: User
+  name: viewer@example.com
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: viewer
+  apiGroup: rbac.authorization.k8s.io
